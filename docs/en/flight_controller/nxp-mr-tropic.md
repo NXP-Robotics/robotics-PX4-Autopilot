@@ -1,3 +1,72 @@
+## Assembly/Setup
+
+Wiring is similar to the [Holybro Pixhawk 6X](../flight_controller/pixhawk6x.md#connections) and other boards that follow the [Pixhawk Connector Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf).
+
+## Connections
+
+_MR-VMU-TROPIC_ connectors (following [Pixhawk Connector Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf))
+TODO images
+
+![MR-VMU-TROPIC Top Image](../../assets/flight_controller/nxp_mr-vmu-tropic/mr-vmu-tropic_top.jpg)
+![MR-VMU-TROPIC Front Image](../../assets/flight_controller/nxp_mr-vmu-tropic/mr-vmu-tropic_front.jpg)
+![MR-VMU-TROPIC Leftside Image](../../assets/flight_controller/nxp_mr-vmu-tropic/mr-vmu-tropic_top.jpg)
+![MR-VMU-TROPIC Rightside Image](../../assets/flight_controller/nxp_mr-vmu-tropic/mr-vmu-tropic_top.jpg)
+
+The NXP reference board design production version units have a slightly different connector set than what has tradionally been included in the standard V6X design and also the Holybro V6X-RT units.
+
+The key differentiators are:
+-  No separate IO processor required. All PWMs including redundant coming from RT1064
+
+* CAN port
+* 100BaseT1 two wire ethernet
+
+### Top side interface
+
+* USB-C interface
+* PWM_A and PWM_B
+
+TODO image
+
+### Back side interface
+
+* RC receiver connector
+* Primary GPS port
+* Auxiliary UART connector
+* Telemetry Port 1
+* Telemetry Port 2
+* Debug interface compliant to Pixhawk-DEBUG-FULL standard (aka DCD-F), including SWD and Console access.
+* T1-ETH: 100BaseT1 Two wire 100MBPS Ethernet 
+* CAN: Dual CAN-FD interfaces employing CAN-SIC (Signal Improvement) CAN phys
+* OSD: SPI expansion connector
+* Power input
+
+TODO image
+
+### Debugger and serial console connection
+TODO image
+
+### Indicator LEDs
+TODO image
+
+## Pinouts
+
+### Top view TODO
+
+![MR-VMU-TROPIC Top Image](../../assets/flight_controller/nxp_mr-vmu-tropic/mr-vmu-tropic_top.jpg)
+
+### Back view TODO
+
+![MR-VMU-TROPIC Top Image](../../assets/flight_controller/nxp_mr-vmu-tropic/mr-vmu-tropic_top.jpg)
+
+### Left side view TODO
+
+![MR-VMU-TROPIC Top Image](../../assets/flight_controller/nxp_mr-vmu-tropic/mr-vmu-tropic_top.jpg)
+
+### Right side view TODO
+
+![MR-VMU-TROPIC Top Image](../../assets/flight_controller/nxp_mr-vmu-tropic/mr-vmu-tropic_top.jpg)
+
+
 ## Building Firmware
 > Most users will not need to build this firmware!
 It is pre-built and automatically installed by _QGroundControl_ when appropriate hardware is connected.

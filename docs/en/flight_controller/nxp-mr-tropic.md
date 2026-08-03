@@ -122,8 +122,7 @@ For information about using this port see:
 - 1 CAN Bus for CAN peripheral
   - Termination resistor on-board (120 ohm)
 - 1 Power input port with SMBus
-- 1 AD & IO port
-- 2 Dedicated debug and GPIO lines
+- 1 Debug port
 
 - Other Characteristics:
   - Operating & storage temperature: {TODO}°c

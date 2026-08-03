@@ -101,3 +101,29 @@ For information about using this port see:
 
 - [SWD Debug Port](../debug/swd_debug.md)
 - [PX4 System Console](../debug/system_console.md)
+
+
+## Interfaces
+
+- 8 PWM servo outputs, all 8 with D-SHOT
+- Dedicated R/C input for CRSF / ELRS
+- 3 general purpose serial ports:
+  - 3 with full flow control
+- 1 GPS port
+  - 1 full GPS plus Safety Switch Port
+- 1 I2C port
+- 1 Ethernet port
+  - Transformerless Applications
+  - 100Mbps
+- 1 SPI bus (OSD)
+  - 1 chip select line
+  - 1 data-ready line
+  - 1 reset line
+- 1 CAN Bus for CAN peripheral
+  - Termination resistor on-board (120 ohm)
+- 1 Power input port with SMBus
+- 1 AD & IO port
+- 2 Dedicated debug and GPIO lines
+
+- Other Characteristics:
+  - Operating & storage temperature: {TODO}°c

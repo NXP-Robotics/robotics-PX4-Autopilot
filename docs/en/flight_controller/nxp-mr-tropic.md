@@ -1,3 +1,32 @@
+## Processors & Sensors
+
+- FMU Processor: NXP i.MX RT1064
+  - 32 Bit Arm Cortex-M7, 600MHz
+  - On-chip 4MB flash
+  - 1 MB on-chip SRAM - up to 512 KB configurable as tightly coupled memory (TCM)
+
+- On-board sensors:
+  - Accel/Gyro: TDK InvenSense ICM-45686
+  - Accel/Gyro: Bosch BMI088
+  - Mag: Bosch BMM350
+  - Pressure Sensor: Bosch BMP390
+
+## Electrical Data
+
+- Voltage Ratings:
+  - Max input voltage: 5.5V
+  - USB Power Input: 5V
+  - Servo Rail Input: TODO
+
+- Current Ratings: TODO
+
+## Mechanical Data (dimensions & weight)
+
+- Dimensions:
+  - Standard Baseboard: 46 x 45 x 1.57mm
+- Weight:
+  - Standard Baseboard: TODO
+
 ## Assembly/Setup
 
 Wiring is similar to the [Holybro Pixhawk 6X](../flight_controller/pixhawk6x.md#connections) and other boards that follow the [Pixhawk Connector Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf).

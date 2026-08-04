@@ -11,6 +11,7 @@ For more information about PX4 project autopilot board support levels see: [px4.
 The boards in this category are:
 
 - [NXP MR-VMU-RT1176 FMU](../flight_controller/nxp_mr_vmu_rt1176.md) (FMUv6X-RT)
+- [NXP MR-TROPIC FMU](../flight_controller/nxp_mr_tropic.md) (FMUv6X-RT)
 - [Holybro Pixhawk 6X-RT](../flight_controller/pixhawk6x-rt.md) (FMUv6X-RT)
 - [Holybro Pixhawk 6X Pro (FMUv6X)](../flight_controller/pixhawk6x_pro.md) (FMUv6X)
 - [CUAV Pixhawk V6X](../flight_controller/cuav_pixhawk_v6x.md) (FMUv6X)

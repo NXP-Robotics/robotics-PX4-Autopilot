@@ -31,12 +31,12 @@
 
 MEMORY
 {
-  mcuboot_header (rwx) : ORIGIN = 0x28000000, LENGTH = 0x00000800
-  m_interrupts (rx)  : ORIGIN = 0x28000800, LENGTH = 0x00001000
-  flash (rx)  : ORIGIN = 0x28001000, LENGTH = 0x01FFE000
-  sram  (rwx) : ORIGIN = 0x20000000, LENGTH = 256K
-  itcm  (rwx) : ORIGIN = 0x00000000, LENGTH = 256K
-  ocram (rwx) : ORIGIN = 0x20480000, LENGTH = 256K
+   mcuboot_header (rwx) : ORIGIN = 0x02000000, LENGTH = 0x00000800
+   m_interrupts (rx)  : ORIGIN = 0x02020800, LENGTH = 0x00001000
+   flash (rx)  : ORIGIN = 0x02021000, LENGTH = 0x01FFE000
+   sram  (rwx) : ORIGIN = 0x20000000, LENGTH = 256K
+   itcm  (rwx) : ORIGIN = 0x00000000, LENGTH = 256K
+   ocram (rwx) : ORIGIN = 0x20480000, LENGTH = 256K
 }
 
 OUTPUT_ARCH(arm)

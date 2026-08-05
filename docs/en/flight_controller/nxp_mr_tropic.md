@@ -1,5 +1,7 @@
 # NXP MR-TROPIC Flight Controller
 
+TODO: clarify MR-TROPIC vs MR-VMU-TROPIC name
+
 <Badge type="tip" text="PX4 v1.17" />
 
 :::warning
@@ -15,11 +17,11 @@ It has already gone through all FCC/CE ROHS REACH UKCA, EMI/RFI ESD certificatio
 
 TODO: add image
 
-Besides the standrd interfaces, the carrier board offers 100Base-T1 (two-wire) automotive ethernet.
-It also removes the IO processor to enable 8 PWM ports, all of them providing Dshot capability.
+Besides the standard interfaces, the carrier board offers 100Base-T1 (two-wire) automotive Ethernet.
+It also removes the IO processor to enable 8 PWM ports, all of them providing DShot capability.
 
-This board takes advantage of multiple Pixhawk​​® open standards, such as the FMUv6X-RT Standard, [Autopilot Bus Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-010%20Pixhawk%20Autopilot%20Bus%20Standard.pdf), and [Connector Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf).
-Equipped with a high performance NXP i.mx RT1064 dual core Processor, modular design, temperature-controlled IMU board, isolated sensor domains, delivering incredible performance, reliability, and flexibility.
+This board takes advantage of multiple Pixhawk​​® open standards, such as the [Pixhawk<sup>&reg;</sup> FMUv6X-RT open standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-020%20Pixhawk%20Autopilot%20v6X-RT%20Standard.pdf), [Autopilot Bus Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-010%20Pixhawk%20Autopilot%20Bus%20Standard.pdf), and [Connector Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf).
+Equipped with a high performance NXP i.MX RT1064 processor, modular design, temperature-controlled IMU board, isolated sensor domains, MR-TROPIC delivers incredible performance, reliability, and flexibility.
 
 :::tip
 This autopilot is [supported](../flight_controller/autopilot_pixhawk_standard.md) by the PX4 maintenance and test teams.
@@ -35,9 +37,9 @@ Thanks to this increased processing power, developers can be more productive and
 
 The FMUv6X-RT open standard includes high-performance, low-noise IMUs on board, designed for better stabilization.
 
-External sensor bus has one chip select line and data-ready signals for additional sensors and payload with SPI-interface, and with an integrated NXP TJA1103 Ethernet PHY, high-speed communication with mission computers via ethernet is now possible.
+External sensor bus has one chip select line and data-ready signals for additional sensors and payload with SPI-interface, and with an integrated NXP TJA1103 Ethernet PHY, high-speed communication with mission computers via Ethernet is now possible.
 
-The MR-TROPIC reference design is perfect for developers at corporate research labs, startups, academics (research, professors, students), and commercial application that like to try out T1 (2 wire) automotive ethernet.
+The MR-TROPIC reference design is perfect for developers at corporate research labs, startups, academics (research, professors, students), and commercial application that like to try out T1 (2 wire) automotive Ethernet.
 
 Note that since it is a reference design, this _particular_ board is not produced in high volume.
 Similar variants will be available from our licensees.
@@ -45,7 +47,7 @@ Similar variants will be available from our licensees.
 ## Key Design Points
 
 - High performance [NXP i.MX RT1064 600 MHz Crossover MCU](https://www.nxp.com/products/i.MX-RT1064) with Arm® Cortex® core
-- Modular flight controller: separated IMU, FMU, and Base system connected by a 100-pin & a 50-pin Pixhawk® Autopilot Bus connector.
+- Modular flight controller: separated IMU, FMU, and Base system connected by a 100-pin & a 50-pin Pixhawk® Autopilot Bus connector
 - Redundancy: 2x IMU sensors on separate buses
 - Newly designed vibration isolation system to filter out high frequency vibration and reduce noise to ensure accurate readings
 - 100Base-T1 2-Wire Ethernet interface for high-speed mission computer integration
@@ -100,7 +102,7 @@ The key differentiators are:
 -  No separate IO processor required. All PWMs including redundant coming from RT1064
 
 * CAN port
-* 100BaseT1 two wire ethernet
+* 100BaseT1 two wire Ethernet
 
 ### Top side interface
 
@@ -187,7 +189,7 @@ For information about using this port see:
 
 ## Interfaces
 
-- 8 PWM servo outputs, all 8 with D-SHOT
+- 8 PWM servo outputs, all 8 with DShot
 - Dedicated R/C input for CRSF / ELRS
 - 3 general purpose serial ports:
   - 3 with full flow control

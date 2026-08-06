@@ -9,9 +9,9 @@ PX4 does not manufacture this (or any) autopilot.
 Contact the [manufacturer](https://www.nxp.com) for hardware support (https://community.nxp.com/) or compliance issues.
 :::
 
-The _MR-TROPIC_ reference design is based on the [Pixhawk<sup>&reg;</sup> FMUv6X-RT open standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-020%20Pixhawk%20Autopilot%20v6X-RT%20Standard.pdf), the latest update to the successful family of Pixhawk<sup>&reg;</sup> flight controllers.
+The _MR-TROPIC_ reference design is based on the [Pixhawk® FMUv6X-RT open standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-020%20Pixhawk%20Autopilot%20v6X-RT%20Standard.pdf), the latest update to the successful family of Pixhawk® flight controllers.
 
-This is NXP's open source _reference design_ for using FMUv6X-RT, and was designed and made in collaboration with industry partners<sup>&reg;</sup>, NXP's mobile robotics team and the PX4 team.
+This is NXP's open source _reference design_ for using FMUv6X-RT, and was designed and made in collaboration with industry partners, NXP's mobile robotics team and the PX4 team.
 As a reference/evaluation design, it is intended to be replicated, modified or integrated in production volume by others.
 It has already gone through all FCC/CE ROHS REACH UKCA, EMI/RFI ESD certifications and is available globally.
 
@@ -20,7 +20,7 @@ TODO: add image
 Besides the standard interfaces, the carrier board offers 100Base-T1 (two-wire) automotive Ethernet.
 It also removes the IO processor to enable 8 PWM ports, all of them providing DShot capability.
 
-This board takes advantage of multiple Pixhawk​​® open standards, such as the [Pixhawk<sup>&reg;</sup> FMUv6X-RT open standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-020%20Pixhawk%20Autopilot%20v6X-RT%20Standard.pdf), [Autopilot Bus Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-010%20Pixhawk%20Autopilot%20Bus%20Standard.pdf), and [Connector Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf).
+This board takes advantage of multiple Pixhawk® open standards, such as the [Pixhawk® FMUv6X-RT open standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-020%20Pixhawk%20Autopilot%20v6X-RT%20Standard.pdf), [Autopilot Bus Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-010%20Pixhawk%20Autopilot%20Bus%20Standard.pdf), and [Connector Standard](https://github.com/pixhawk/Pixhawk-Standards/blob/master/DS-009%20Pixhawk%20Connector%20Standard.pdf).
 Equipped with a high performance NXP i.MX RT1064 processor, modular design, temperature-controlled IMU board, isolated sensor domains, MR-TROPIC delivers incredible performance, reliability, and flexibility.
 
 :::tip
@@ -46,7 +46,7 @@ Similar variants will be available from our licensees.
 
 ## Key Design Points
 
-- High performance [NXP i.MX RT1064 600 MHz Crossover MCU](https://www.nxp.com/products/i.MX-RT1064) with Arm® Cortex® core
+- High performance [NXP i.MX RT1064 600 MHz Crossover MCU](https://www.nxp.com/products/i.MX-RT1064) with Arm® Cortex®-M7 core
 - Modular flight controller: separated IMU, FMU, and Base system connected by a 100-pin & a 50-pin Pixhawk® Autopilot Bus connector
 - Redundancy: 2x IMU sensors on separate buses
 - Newly designed vibration isolation system to filter out high frequency vibration and reduce noise to ensure accurate readings

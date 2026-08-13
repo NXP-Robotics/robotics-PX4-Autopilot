@@ -72,6 +72,19 @@ SECTIONS
         *(.ram_vectors)
     } > sram
 
+    /* Non-cacheable section for DMA buffers (NETC BD rings, frame buffers).
+     * Placed in OCRAM which is excluded from the D-cache MPU region.
+     * All objects decorated with __attribute__((section(".noncacheable")))
+     * land here so the M7 D-cache never aliases them.
+     */
+    .netc_dma (NOLOAD) : {
+        . = ALIGN(64);
+        _snoncacheable = ABSOLUTE(.);
+        *(.netc_dma .netc_dma.*)
+        . = ALIGN(64);
+        _enoncacheable = ABSOLUTE(.);
+    } > sram
+
     .text : {
         _stext = ABSOLUTE(.);
         *(.text .text.*)

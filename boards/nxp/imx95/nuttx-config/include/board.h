@@ -233,6 +233,14 @@
 		PFD_CFG(IMX95_SYSPLL_BASE, 2, PFD_PARMS(6, 2, true)), \
 	}
 
+/* NETC VSI0 configuration */
+
+/* To use ENETC Port2, VSI index = 0x0228, MSGNITR instance 2
+ * To use ENETC Port0, VSI index = 0x0024, MSGINTR instange 1
+ */
+#define IMX9_NETC_VSI0_SI_IDX            0x0228
+#define IMX9_NETC_VSI0_MSGINTR_INSTANCE  2
+
 /****************************************************************************
  * Public Data
  ****************************************************************************/

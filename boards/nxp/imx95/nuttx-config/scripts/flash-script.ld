@@ -34,7 +34,8 @@ MEMORY
    mcuboot_header (rwx) : ORIGIN = 0x02000000, LENGTH = 0x00000800
    m_interrupts (rx)  : ORIGIN = 0x02020800, LENGTH = 0x00001000
    flash (rx)  : ORIGIN = 0x02021000, LENGTH = 0x01FFE000
-   sram  (rwx) : ORIGIN = 0x20000000, LENGTH = 256K
+   netc_dma (rw)  : ORIGIN = 0x20000000, LENGTH = 32K
+   sram  (rwx) : ORIGIN = 0x20008000, LENGTH = 224K
    itcm  (rwx) : ORIGIN = 0x00000000, LENGTH = 256K
    ocram (rwx) : ORIGIN = 0x20480000, LENGTH = 256K
 }
@@ -73,6 +74,19 @@ SECTIONS
     .ram_vectors (COPY) : {
         *(.ram_vectors)
     } > sram
+
+    /* Non-cacheable section for DMA buffers (NETC BD rings, frame buffers).
+     * Placed in OCRAM which is excluded from the D-cache MPU region.
+     * All objects decorated with __attribute__((section(".netc_dma")))
+     * land here so the M7 D-cache never aliases them.
+     */
+    .netc_dma (NOLOAD) : {
+        . = ALIGN(64);
+        _snoncacheable = ABSOLUTE(.);
+        *(.netc_dma .netc_dma.*)
+        . = ALIGN(64);
+        _enoncacheable = ABSOLUTE(.);
+    } > netc_dma
 
     .text : {
         _stext = ABSOLUTE(.);

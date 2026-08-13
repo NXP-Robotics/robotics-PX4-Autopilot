@@ -41,6 +41,9 @@
 #  include "imx9_flexcan.h"
 #endif
 
+#ifdef CONFIG_IMX9_NETC_VSI
+#  include "imx9_netc_vsi.h"
+#endif
 #ifdef CONFIG_RPMSG_UART
 #  include <nuttx/serial/uart_rpmsg.h>
 #endif
@@ -167,6 +170,14 @@ int imx95_bringup(void)
 
 #ifdef CONFIG_IMX9_FLEXCAN4
 	imx9_caninitialize(5);
+#endif
+
+#ifdef CONFIG_IMX9_NETC_VSI
+	ret = imx9_netc_vsi_initialize();
+
+	if (ret < 0) {
+		syslog(LOG_ERR, "ERROR: Failed to initialize NETC VSI: %d\n", ret);
+	}
 #endif
 
 	return ret;

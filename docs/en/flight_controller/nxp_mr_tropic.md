@@ -119,7 +119,7 @@ TODO image
 * Telemetry Port 1
 * Telemetry Port 2
 * Debug interface compliant to Pixhawk-DEBUG-FULL standard (aka DCD-F), including SWD and Console access.
-* T1-ETH: 100BaseT1 Two wire 100MBPS Ethernet 
+* T1-ETH: 100BaseT1 Two wire 100MBPS Ethernet
 * CAN: Dual CAN-FD interfaces employing CAN-SIC (Signal Improvement) CAN phys
 * OSD: SPI expansion connector
 * Power input
@@ -150,6 +150,52 @@ TODO image
 
 ![MR-VMU-TROPIC Top Image](../../assets/flight_controller/nxp_mr-vmu-tropic/mr-vmu-tropic_top.jpg)
 
+## Serial Port Mapping
+
+| UART   | Device     | Port        |
+| ------ | ---------- | ----------- |
+| UART3  | /dev/ttyS2 | TELEM1      |
+| UART5  | /dev/ttyS4 | TELEM2      |
+| UART4  | /dev/ttyS3 | AUX         |
+| UART2  | /dev/ttyS1 | GPS         |
+| UART8  | /dev/ttyS6 | RC          |
+| UART6  | /dev/ttyS0 | Debug       |
+| UART7  | /dev/ttyS5 | ESC ONEWIRE |
+
+::: info
+The AUX port is displayed as TEL3 in PX4 Firmware Configurator.
+:::
+
+## Voltage Ratings
+
+_MR-TROPIC_ has two power rails: **POWER1** and **USB**.
+The **POWER1** is supplied via the **J2** connector (the 6 circuit [2.00mm Pitch CLIK-Mate Wire-to-Board PCB Receptacle](https://www.molex.com/en-us/products/part-detail/5024430670)) and directly powers the following:  I2C (J10), GPS (J4), AUX (J7), CAN (J5), TELEM1 (J8), TELEM2 (J9), RC (J11) and SPI-OSD (J6) ports.
+
+::: warning
+Any device connected to these ports must be compatible with the **POWER1** voltage rail.
+:::
+
+### Normal Operation Maximum Ratings
+
+| Rail       | Minimum | Maximum |
+|------------|---------|---------|
+| **USB**    | 4.5 V   | 5.5 V   |
+| **POWER1** | 4.9 V   | 5.5 V   |
+
+### Absolute Maximum Ratings
+
+| Rail       | Minimum | Maximum |
+|------------|---------|---------|
+| **USB**    | 0 V     | 6 V     |
+| **POWER1** | 0 V     | 6 V     |
+
+### Voltage monitoring
+
+Digital I2C battery monitoring is enabled by default (see [Quickstart > Power](../assembly/quick_start_pixhawk6x.md#power)).
+
+::: info
+Analog battery monitoring via an ADC is not supported on this particular board.
+:::
 
 ## Building Firmware
 > Most users will not need to build this firmware!
@@ -192,7 +238,7 @@ For information about using this port see:
 - 8 PWM servo outputs, all 8 with DShot
 - Dedicated R/C input for CRSF / ELRS
 - 3 general purpose serial ports:
-  - 3 with full flow control
+  - 2 with full flow control
 - 1 GPS port
   - 1 full GPS plus Safety Switch Port
 - 1 I2C port

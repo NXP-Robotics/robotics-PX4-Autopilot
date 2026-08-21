@@ -119,7 +119,7 @@ TODO image
 * Telemetry Port 1
 * Telemetry Port 2
 * Debug interface compliant to Pixhawk-DEBUG-FULL standard (aka DCD-F), including SWD and Console access.
-* T1-ETH: 100BaseT1 Two wire 100MBPS Ethernet
+* T1-ETH: 100BaseT1 Two wire 100Mbps Ethernet
 * CAN: Dual CAN-FD interfaces employing CAN-SIC (Signal Improvement) CAN phys
 * OSD: SPI expansion connector
 * Power input

@@ -16,11 +16,11 @@
 	branch = main
 [submodule "platforms/nuttx/NuttX/nuttx"]
 	path = platforms/nuttx/NuttX/nuttx
-    url = ssh://git@bitbucket.sw.nxp.com/tars/nuttx.git
+	url = https://github.com/nxp-mobilerobotics/NuttX.git
 	branch = px4_firmware_nuttx-12.12.0+
 [submodule "platforms/nuttx/NuttX/apps"]
 	path = platforms/nuttx/NuttX/apps
-    url = ssh://git@bitbucket.sw.nxp.com/tars/nuttx-apps.git
+	url = https://github.com/nxp-mobilerobotics/NuttX-apps.git
 	branch = px4_firmware_nuttx-12.12.0+
 [submodule "Tools/flightgear_bridge"]
 	path = Tools/simulation/flightgear/flightgear_bridge

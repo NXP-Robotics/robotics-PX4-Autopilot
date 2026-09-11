@@ -57,10 +57,12 @@ set(Z_TRANSPORT_LEASE 60000 CACHE STRING "Link lease duration in milliseconds to
 set(Z_TRANSPORT_LEASE_EXPIRE_FACTOR 2 CACHE STRING "Link lease duration in milliseconds to announce to other zenoh nodes")
 
 set(FRAG_MAX_SIZE 512 CACHE STRING "Use this to override the maximum size for fragmented messages")
-set(BATCH_UNICAST_SIZE 256 CACHE STRING "Use this to override the maximum unicast batch size")
+set(BATCH_UNICAST_SIZE 2048 CACHE STRING "Use this to override the maximum unicast batch size")
 set(BATCH_MULTICAST_SIZE 256 CACHE STRING "Use this to override the maximum multicast batch size")
 
 set(Z_FEATURE_UNSTABLE_API 1 CACHE STRING "Toggle unstable Zenoh-C API")
+
+set(Z_CONFIG_SOCKET_TIMEOUT 2000 CACHE STRING "Default socket timeout in milliseconds")
 
 px4_add_git_submodule(TARGET git_zenoh-pico PATH "zenoh-pico")
 add_subdirectory(zenoh-pico)

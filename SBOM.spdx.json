@@ -1,0 +1,64 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.3",
+  "creationInfo": {
+    "created": "2026-09-18T08:28:15Z",
+    "creators": [
+      "Organization: NXP"
+    ],
+    "licenseListVersion": "3.28"
+  },
+  "name": "robotics-PX4-Autopilot-0.7.0",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://nxp.com/spdx/388db02a-a817-4b9d-86a1-02e02131a1e9",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-package-388db02a-a817-4b9d-86a1-02e02131a1e9",
+      "name": "robotics-PX4-Autopilot",
+      "versionInfo": "0.7.0",
+      "licenseConcluded": "(BSD-3-Clause)",
+      "licenseDeclared": "(BSD-3-Clause)",
+      "downloadLocation": "https://github.com/nxp-robotics/robotics-PX4-Autopilot",
+      "originator": "Organization: NXP",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-388db02a-a817-4b9d-86a1-02e02131a1e9---fce22158-1556-487b-9b46-bcd5a6073701",
+      "name": "PX4-Autopilot",
+      "versionInfo": "v1.17.0",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "homepage": "https://px4.io",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: unknown",
+      "supplier": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "SECURITY",
+          "referenceLocator": "cpe:2.3:a:dronecode:px4_drone_autopilot:1.17.0:*:*:*:*:*:*:*",
+          "referenceType": "cpe23Type"
+        },
+        {
+          "referenceCategory": "SECURITY",
+          "referenceLocator": "cpe:2.3:a:px4:px4_autopilot:1.17.0:*:*:*:*:*:*:*",
+          "referenceType": "cpe23Type"
+        }
+      ],
+      "filesAnalyzed": false
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-package-388db02a-a817-4b9d-86a1-02e02131a1e9"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-388db02a-a817-4b9d-86a1-02e02131a1e9",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-388db02a-a817-4b9d-86a1-02e02131a1e9---fce22158-1556-487b-9b46-bcd5a6073701"
+    }
+  ]
+}

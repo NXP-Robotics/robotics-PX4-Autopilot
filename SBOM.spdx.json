@@ -1,0 +1,98 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.3",
+  "creationInfo": {
+    "created": "2026-09-18T08:28:47Z",
+    "creators": [
+      "Organization: NXP"
+    ],
+    "licenseListVersion": "3.28"
+  },
+  "name": "robotics-PX4-Autopilot-0.7.0_navq95",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://nxp.com/spdx/1404ef11-a259-4cb9-9f8f-3963c123938c",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-package-1404ef11-a259-4cb9-9f8f-3963c123938c",
+      "name": "robotics-PX4-Autopilot",
+      "versionInfo": "0.7.0_navq95",
+      "licenseConcluded": "(BSD-3-Clause)",
+      "licenseDeclared": "(BSD-3-Clause)",
+      "downloadLocation": "https://github.com/nxp-robotics/robotics-PX4-Autopilot",
+      "originator": "Organization: NXP",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-1404ef11-a259-4cb9-9f8f-3963c123938c---f26a9549-dbf0-4c48-86b6-a02e7e4e704a",
+      "name": "mcu-tools/mcuboot",
+      "versionInfo": "v2.2.0",
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "homepage": "https://mcuboot.com/",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: mcu-tools",
+      "supplier": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "SECURITY",
+          "referenceLocator": "cpe:2.3:a:mcu-tools:mcuboot:2.2.0:*:*:*:*:*:*:*",
+          "referenceType": "cpe23Type"
+        },
+        {
+          "referenceCategory": "OTHER",
+          "referenceLocator": "ed668dae-6543-449c-81f0-3e23f32433bd",
+          "referenceType": "BlackDuck-ComponentOrigin"
+        },
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceLocator": "pkg:github/mcu-tools/mcuboot@v2.2.0",
+          "referenceType": "purl"
+        }
+      ],
+      "filesAnalyzed": false
+    },
+    {
+      "SPDXID": "SPDXRef-package-1404ef11-a259-4cb9-9f8f-3963c123938c---fce22158-1556-487b-9b46-bcd5a6073701",
+      "name": "PX4-Autopilot",
+      "versionInfo": "v1.17.0",
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "homepage": "https://px4.io",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: unknown",
+      "supplier": "NOASSERTION",
+      "externalRefs": [
+        {
+          "referenceCategory": "SECURITY",
+          "referenceLocator": "cpe:2.3:a:dronecode:px4_drone_autopilot:1.17.0:*:*:*:*:*:*:*",
+          "referenceType": "cpe23Type"
+        },
+        {
+          "referenceCategory": "SECURITY",
+          "referenceLocator": "cpe:2.3:a:px4:px4_autopilot:1.17.0:*:*:*:*:*:*:*",
+          "referenceType": "cpe23Type"
+        }
+      ],
+      "filesAnalyzed": false
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-package-1404ef11-a259-4cb9-9f8f-3963c123938c"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-1404ef11-a259-4cb9-9f8f-3963c123938c",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-1404ef11-a259-4cb9-9f8f-3963c123938c---f26a9549-dbf0-4c48-86b6-a02e7e4e704a"
+    },
+    {
+      "spdxElementId": "SPDXRef-package-1404ef11-a259-4cb9-9f8f-3963c123938c",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-package-1404ef11-a259-4cb9-9f8f-3963c123938c---fce22158-1556-487b-9b46-bcd5a6073701"
+    }
+  ]
+}

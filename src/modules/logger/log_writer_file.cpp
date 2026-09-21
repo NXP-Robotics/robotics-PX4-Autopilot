@@ -291,8 +291,10 @@ int LogWriterFile::thread_start()
 	param.sched_priority = SCHED_PRIORITY_DEFAULT - 40;
 	(void)pthread_attr_setschedparam(&thr_attr, &param);
 
-#ifdef CONFIG_FS_LITTLEFS
+#if defined(CONFIG_FS_LITTLEFS)
 	pthread_attr_setstacksize(&thr_attr, PX4_STACK_ADJUSTED(1800));  /* littlefs needs more stack */
+#elif defined(CONFIG_FS_RPMSGFS)
+	pthread_attr_setstacksize(&thr_attr, PX4_STACK_ADJUSTED(1800));  /* rpmsgfs RPC path needs more stack */
 #else
 	pthread_attr_setstacksize(&thr_attr, PX4_STACK_ADJUSTED(1170));
 #endif

@@ -207,6 +207,30 @@
 #define BOARD_INDICATE_EXTERNAL_LOCKOUT_STATE(enabled)  px4_arch_configgpio((enabled) ? GPIO_nARMED : GPIO_nARMED_INIT)
 #define BOARD_GET_EXTERNAL_LOCKOUT_STATE() px4_arch_gpioread(GPIO_nARMED)
 
+/* FlexCAN / CAN connector map
+ *
+ * The NavQ95 IO board has three CAN connectors (silk CAN1/CAN2/CAN3).
+ * On this board the i.MX95 System Manager assigns FLEXCAN1 to the
+ * A55/Linux domain; only FLEXCAN2 and FLEXCAN3 are owned by the M7.
+ * The M7 must therefore not enable FLEXCAN1 (doing so faults at boot).
+ *
+ * The socketcan device name (canN) is assigned in the order the
+ * interfaces are registered in imx95_bringup.c, NOT by the FlexCAN
+ * number.  DroneCAN/UAVCAN attaches interfaces 0 ..
+ * CONFIG_BOARD_UAVCAN_INTERFACES-1, i.e. can0 .. can(N-1), and
+ * 'uavcan status' lists only those.
+ *
+ *  Silk  Conn  FlexCAN   TX / RX net       socketcan  Owner / UAVCAN
+ *  ----  ----  --------  ----------------  ---------  --------------
+ *  CAN1  J4    FLEXCAN1  CAN1_TX / CAN1_RX  --         A55/Linux
+ *  CAN2  J8    FLEXCAN2  CAN2_TX / CAN2_RX  can0       M7 iface 0
+ *  CAN3  J9    FLEXCAN3  CAN3_TX / CAN3_RX  can1       M7 iface 1
+ *
+ * Each connector is a separate CAN bus (120 ohm terminated, side
+ * entry).  Chain multiple nodes on one bus; do not expect one node
+ * per connector.
+ */
+
 /* PWM Capture
  *
  * 2  PWM Capture inputs are supported

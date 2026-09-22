@@ -168,7 +168,7 @@ int imx95_bringup(void)
 	imx9_caninitialize(4);
 #endif
 
-#ifdef CONFIG_IMX9_FLEXCAN4
+#ifdef CONFIG_IMX9_FLEXCAN5
 	imx9_caninitialize(5);
 #endif
 

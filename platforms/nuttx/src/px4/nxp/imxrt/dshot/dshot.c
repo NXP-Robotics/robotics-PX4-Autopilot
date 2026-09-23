@@ -104,6 +104,11 @@ typedef struct dshot_channel_t {
 
 #define BDSHOT_ZERO_RESPONSE    0x52951
 
+/* Maximum number of SHIFTSTAT poll iterations to wait for a shifter buffer to
+ * empty before giving up
+ */
+#define DSHOT_POLL_TIMEOUT      100000u
+
 static dshot_channel_t dshot_inst[DSHOT_TIMERS] = {};
 
 static uint32_t dshot_tcmp;
@@ -142,6 +147,11 @@ static inline void disable_shifter_status_interrupts(uint32_t mask)
 static inline uint32_t get_shifter_status_flags(void)
 {
 	return flexio_getreg32(IMXRT_FLEXIO_SHIFTSTAT_OFFSET);
+}
+
+static inline bool shifter_buffer_empty(uint32_t channel)
+{
+	return (flexio_getreg32(IMXRT_FLEXIO_SHIFTSTAT_OFFSET) & (1u << channel)) != 0u;
 }
 
 static inline void clear_shifter_status_flags(uint32_t mask)
@@ -562,17 +572,76 @@ void up_dshot_trigger(void)
 		if (dshot_inst[channel].bdshot && (bdshot_recv_mask & (1 << channel)) == 0) {
 			dshot_inst[channel].no_response_cnt++;
 		}
-
-		if (dshot_inst[channel].init && dshot_inst[channel].data_seg1 != 0) {
-			flexio_putreg32(dshot_inst[channel].data_seg1, IMXRT_FLEXIO_SHIFTBUF0_OFFSET + channel * 0x4);
-		}
 	}
 
 	bdshot_recv_mask = 0x0;
 
-	clear_timer_status_flags(0xFF);
-	enable_shifter_status_interrupts(0xFF);
-	enable_timer_status_interrupts(0xFF);
+	// Build the active-channel mask for this trigger
+	uint32_t active_mask = 0x0;
+
+	for (uint8_t channel = 0; (channel < DSHOT_TIMERS); channel++) {
+		if (dshot_inst[channel].init && dshot_inst[channel].data_seg1 != 0) {
+			active_mask |= (1u << channel);
+		}
+	}
+
+	// Regular (non-bidirectional) DShot transmit path.
+	uint32_t poll_mask = 0x0;
+
+	for (uint8_t channel = 0; (channel < DSHOT_TIMERS); channel++) {
+		if ((active_mask & (1u << channel)) && !dshot_inst[channel].bdshot) {
+			poll_mask |= (1u << channel);
+		}
+	}
+
+	// Send the data from each channel
+	if (poll_mask != 0x0) {
+		irqstate_t flags = px4_enter_critical_section();
+
+		// Check each channel
+		for (uint8_t channel = 0; (channel < DSHOT_TIMERS); channel++) {
+			if ((poll_mask & (1u << channel)) == 0u) {
+				continue;
+			}
+
+			// Arm the frame with segment 1 (the write clears SSF,
+			dshot_inst[channel].state = DSHOT_12BIT_FIFO;
+			flexio_putreg32(dshot_inst[channel].data_seg1,
+					IMXRT_FLEXIO_SHIFTBUF0_OFFSET + channel * 0x4);
+
+			// Wait until segment 1 has been latched into the shifter
+			uint32_t spins = 0;
+
+			while (!shifter_buffer_empty(channel) && (spins < DSHOT_POLL_TIMEOUT)) {
+				spins++;
+			}
+
+			// Refill SHIFTBUF with segment 2
+			flexio_putreg32(dshot_inst[channel].irq_data,
+					IMXRT_FLEXIO_SHIFTBUF0_OFFSET + channel * 0x4);
+			dshot_inst[channel].state = DSHOT_12BIT_TRANSFERRED;
+		}
+
+		px4_leave_critical_section(flags);
+	}
+
+	// Bidirectional DShot transmit path
+	uint32_t bdshot_mask = active_mask & ~poll_mask;
+
+	if (bdshot_mask != 0x0) {
+		clear_timer_status_flags(0xFF);
+
+		for (uint8_t channel = 0; (channel < DSHOT_TIMERS); channel++) {
+			if (bdshot_mask & (1u << channel)) {
+				flexio_putreg32(dshot_inst[channel].data_seg1,
+						IMXRT_FLEXIO_SHIFTBUF0_OFFSET + channel * 0x4);
+			}
+		}
+
+		clear_timer_status_flags(0xFF);
+		enable_shifter_status_interrupts(bdshot_mask);
+		enable_timer_status_interrupts(bdshot_mask);
+	}
 }
 
 /* Expand packet from 16 bits 48 to get T0H and T1H timing */

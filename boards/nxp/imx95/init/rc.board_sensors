@@ -11,7 +11,7 @@ icm45686 -R 12 -s start
 bmi088 -A -R 6 -s start
 bmi088 -G -R 6 -s start
 
-bmm350 -I -R 6 start
+bmm350 -I -R 10 start
 bmp581 -I start
 
 i2c_launcher start -b 6 -t 1
